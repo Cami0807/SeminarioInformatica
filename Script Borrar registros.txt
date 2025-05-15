@@ -1,0 +1,1 @@
+DELETE FROM Empleados WHERE Legajo = 13;

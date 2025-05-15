@@ -1,0 +1,12 @@
+SELECT 
+Legajo AS 'lp',
+nombreCat AS 'CATEGORIA USUARIO'
+FROM Empleados
+JOIN CategoriaEmpleados;
+
+
+SHOW TABLES
+
+
+SELECT 
+* FROM Empleados;
