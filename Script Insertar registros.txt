@@ -1,0 +1,54 @@
+
+
+INSERT INTO CategoriaUsuario (idUsuario, CategoriaU)
+VALUES (4, 'Empleado'),
+(2, 'Administrativo'),
+(3, 'Auditor');
+
+
+INSERT INTO Empleado (Legajo, nombre, apellido, email, telefono_de_contacto, contacto_de_emergencia, RelacionDeEmpleo, IdCategoriaUsuario)
+VALUES (1001, 'Camila', 'Caracciolo', 'camila@mail.com', 1144556677, 1133665599, 'Planta permanente', 1),
+(1002, 'Lucas', 'Pérez', 'lucas.perez@mail.com', 1144789012, 1133445566, 'Planta transitoria', 1),
+(1003, 'Sofía', 'Gómez', 'sofia.gomez@mail.com', 1144123456, 1133224455, 'Planta permanente', 1),
+(1004, 'Mateo', 'Ramírez', 'mateo.ramirez@mail.com', 1144998877, 1133778899, 'Planta transitoria', 1);
+;
+
+
+INSERT INTO LicenciaCategoria (idCatLic, Categoria)
+VALUES (10, 'Licencia Médica'),
+(11, 'Licencia de Servicio');
+
+
+INSERT INTO LicenciaMedica (idMed, NombreMed, DiasMed, IdCatLicencia)
+VALUES (501, 'Reposo por enfermedad común', 3, 10),
+(502, 'Familiar', 2, 10),
+(506, 'Internación breve', 5, 10),
+(503, 'Consulta médica con reposo', 1, 10),
+(504, 'Licencia por intervención quirúrgica menor', 7, 10);
+
+INSERT INTO LicenciaServicio (idSer, NombreSer, DiasSer, IdCatLicencia)
+VALUES 
+(601, 'Curso obligatorio de formación', 3, 11),
+(602, 'Licencia por tareas extraordinarias', 2, 11),
+(603, 'Permiso institucional', 1, 11);
+
+
+INSERT INTO Estado (idEst, Estado)
+VALUES 
+ (1, 'Solicitada'),
+(2, 'Pendiente'),
+(3, 'Otorgada'),
+(4, 'Rechazada'),
+(5, 'Suspendida'),
+(6, 'Anulada');
+
+
+INSERT INTO Licencia (idLicencia, Legajo, idLicenciaCategoria, IdMed, IdSer, IdEstado, FechaInicio, FechaFin, DiasTotal)
+VALUES (9001, 1001, 10, 501, NULL, 1, '2025-05-15', '2025-05-17', 3),
+(9002, 1002, 10, 502, NULL, 1, '2025-05-12', '2025-05-16', 5),
+(9003, 1003, 10, 503, NULL, 1, '2025-05-15', '2025-05-15', 1),
+(9004, 1004, 10, 504, NULL, 1, '2025-05-10', '2025-05-16', 7),
+(9005, 1002, 11, NULL, 601, 1, '2025-05-20', '2025-05-22', 3),
+(9006, 1003, 11, NULL, 602, 1, '2025-05-18', '2025-05-19', 2),
+(9007, 1004, 11, NULL, 603, 1, '2025-05-14', '2025-05-14', 1);
+

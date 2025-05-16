@@ -1,0 +1,55 @@
+CREATE TABLE CategoriaUsuario (
+  idUsuario INT PRIMARY KEY,
+  CategoriaU VARCHAR(100)
+);
+
+CREATE TABLE Empleado (
+  Legajo INT PRIMARY KEY,
+  nombre VARCHAR(100),
+  apellido VARCHAR(100),
+  email TEXT,
+  telefono_de_contacto INT,
+  contacto_de_emergencia INT,
+  RelacionDeEmpleo TEXT,
+  IdCategoriaUsuario INT,
+  FOREIGN KEY (IdCategoriaUsuario) REFERENCES CategoriaUsuario(idUsuario)
+);
+
+CREATE TABLE LicenciaCategoria (
+  idCatLic INT PRIMARY KEY,
+  Categoria VARCHAR(100)
+);
+CREATE TABLE LicenciaMedica (
+  idMed INT PRIMARY KEY,
+  NombreMed VARCHAR(150),
+  DiasMed INT,
+  IdCatLicencia INT,
+  FOREIGN KEY (IdCatLicencia) REFERENCES LicenciaCategoria(idCatLic)
+);
+CREATE TABLE LicenciaServicio (
+  idSer INT PRIMARY KEY,
+  NombreSer VARCHAR(150),
+  DiasSer INT,
+  IdCatLicencia INT,
+  FOREIGN KEY (IdCatLicencia) REFERENCES LicenciaCategoria(idCatLic)
+);
+CREATE TABLE Estado (
+  idEst INT PRIMARY KEY,
+  Estado VARCHAR(100)
+);
+CREATE TABLE Licencia (
+  idLicencia INT PRIMARY KEY,
+  Legajo INT,
+  idLicenciaCategoria INT,
+  IdMed INT,
+  IdSer INT,
+  IdEstado INT,
+  FechaInicio DATE,
+  FechaFin DATE,
+  DiasTotal INT,
+  FOREIGN KEY (Legajo) REFERENCES Empleado(Legajo),
+  FOREIGN KEY (idLicenciaCategoria) REFERENCES LicenciaCategoria(idCatLic),
+  FOREIGN KEY (IdMed) REFERENCES LicenciaMedica(idMed),
+  FOREIGN KEY (IdSer) REFERENCES LicenciaServicio(idSer),
+  FOREIGN KEY (IdEstado) REFERENCES Estado(idEst)
+);

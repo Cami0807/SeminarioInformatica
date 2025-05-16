@@ -1,0 +1,23 @@
+SELECT 
+  e.nombre AS NombreEmpleado,
+  e.apellido AS ApellidoEmpleado,
+  lc.Categoria AS TipoLicencia,
+  lm.NombreMed AS LicenciaMedica,
+  ls.NombreSer AS LicenciaServicio,
+  est.Estado AS EstadoActual,
+  l.FechaInicio,
+  l.FechaFin,
+  l.DiasTotal
+FROM Licencia l
+JOIN Empleado e ON l.Legajo = e.Legajo
+JOIN LicenciaCategoria lc ON l.idLicenciaCategoria = lc.idCatLic
+LEFT JOIN LicenciaMedica lm ON l.IdMed = lm.idMed
+LEFT JOIN LicenciaServicio ls ON l.IdSer = ls.idSer
+JOIN Estado est ON l.IdEstado = est.idEst;
+
+SELECT * from Licencia
+
+
+SHOW TABLES
+
+
